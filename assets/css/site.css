@@ -1,0 +1,139 @@
+body {
+    margin:0;
+    padding:0;
+}
+#map {
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+#map .icon.menu, #map .icon.x, #map .icon.video {
+    position: absolute;
+    z-index: 1001;
+    left: 10px;
+    bottom:10px;
+    display: none;
+}
+#map .icon.x {
+    bottom:60px;
+}
+#map .icon.video {
+    bottom:110px;
+}
+.popup {
+    position: relative;
+    top: 75px;
+    z-index: 100;
+}
+.indent {
+    margin-left: 20px;
+}
+.route {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.89);
+    z-index: 1000;
+    display: none;
+    overflow-y:scroll;
+}
+.action {
+    width: 85%;
+    margin: 0 auto;
+}
+.route .list li {
+    width: 100%;
+    border-top: 1px solid rgba(53, 53, 53, 0.31);
+}
+.alert-box {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    display: none;
+}
+.progress-limiter {
+    margin: 0 auto 20px;
+    width: 100%;
+    background: #eee;
+    position: relative;
+    display: none;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.progress {
+    background: #8a8acb!important;
+    height: 10px;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+hr {
+    margin: 0!important;
+}
+.location-icon {
+    background-color: #56b881;
+    border-radius: 30px;
+    animation: dotPulse 2000ms 0ms infinite;
+    -moz-animation: dotPulse 2000ms 0ms infinite;
+    -webkit-animation: dotPulse 2000ms 0ms infinite;
+    border: 3px solid white;
+}
+/*.location-icon:after {
+    content:'';
+    width: 0px;
+    height: 0px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 13px solid #56b881;
+    border-radius: 3px;
+    position: relative;
+    left:3px;
+    bottom:35px;
+}
+*/
+.location-icon.no-after:after {
+    content:'';
+    border:none!important;
+}
+.flash {
+    animation: flash 1000ms 0ms infinite;
+    -moz-animation: flash 1000ms 0ms infinite;
+    -webkit-animation: flash 1000ms 0ms infinite;
+}
+.leaflet-marker-icon {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.step-icon span {
+    margin-top: 150%;
+}
+/*#voice {
+    display: none;
+}*/
+ @-webkit-keyframes flash {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+@-webkit-keyframes dotPulse {
+    0% {
+        box-shadow:white 0px 0px 10px 2px, rgba(103, 184, 103, 1) 0px 0px 10px -5px;
+        opacity: 100%;
+    }
+    100% {
+        box-shadow:white 0px 0px 10px 0px, rgba(103, 184, 103, 0) 0px 0px 0px 35px;
+        opacity: 0%;
+    }
+}
+@media only screen and (max-width:640px) {
+    /*.progress-limiter {
+        width: 98%;
+    }*/
+}
+.leaflet-clickable {
+    cursor: pointer;
+}
