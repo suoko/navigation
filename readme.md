@@ -1,4 +1,4 @@
-## Navigation Test Bed
+## Navigation Test Bed (fixed for firefox and on its way to become a firefoxos app)
 
 #### How To
 * Right click (long press mobile) to add route. 
