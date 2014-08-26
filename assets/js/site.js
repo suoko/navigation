@@ -274,8 +274,9 @@ $(function () {
 
     function saySomething(text) {
         $('.voice').empty();
-        $('.voice').append("<iframe class='voice' src='https://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + text + "' frameborder='0' style='display:none'></iframe>")
-    }
+    /*$('.voice').append("<iframe class='voice' src='https://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + text + "' frameborder='0' style='display:none'></iframe>")*/
+	$('.voice').append("<audio autoplay><source src=http://tts-api.com/tts.mp3?q=" + text + " type=audio/mpeg></audio><p>\"" + text + "\"");
+	}
 
     function checkIfUserIsInOtherCircle(route, user) {
         var i = 0;
