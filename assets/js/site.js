@@ -29,12 +29,16 @@ $(function () {
         $('.stop, .toggle, .route, .animate').fadeOut();
     });
 
-    var map = L.mapbox.map('map', 'bobbysud.map-8owxxni8', {
+    L.mapbox.accessToken = 'pk.eyJ1Ijoic3Vva28iLCJhIjoicUl0WUpGbyJ9.PHo4BAra3WHDCljdCQ8F6Q';
+    var map = L.mapbox.map('map', 'suoko.jba0gkme', {
         tileLayer: {
             detectRetina: true
         },
-        zoomControl: false
-    });
+        zoomControl: true
+    })
+    .addControl(L.mapbox.geocoderControl('mapbox.places-v1', {
+        keepOpen: true
+    }));
 
     new L.hash(map);
 
@@ -113,7 +117,7 @@ $(function () {
             checkUserComparedToRoute(currentRoute);
             followUserAndRoute(currentRoute);
             locationMarker.getLayers()[0].setLatLng(L.latLng([currentRoute.routes[0].geometry.coordinates[j][1], currentRoute.routes[0].geometry.coordinates[j][0]]))
-            if (++j < currentRoute.routes[0].geometry.coordinates.length) setTimeout(tick, 1000);
+            if (++j < currentRoute.routes[0].geometry.coordinates.length) setTimeout(tick, 1000000000000);
         }
 
     });
@@ -123,7 +127,7 @@ $(function () {
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: 'https://api.tiles.mapbox.com/v3/bobbysud.map-8owxxni8/directions/driving/' + startLng + ',' + startLat + ';' + finishLng + ',' + finishLat + '.json?instrucstions=html',
+            url: 'https://api.tiles.mapbox.com/v3/suoko.jba0gkme/directions/driving/' + startLng + ',' + startLat + ';' + finishLng + ',' + finishLat + '.json?instrucstions=html',
             success: function (e) {
 
                 if (e.error) alert(e.error);
@@ -274,9 +278,9 @@ $(function () {
 
     function saySomething(text) {
         $('.voice').empty();
-    /*$('.voice').append("<iframe class='voice' src='https://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + text + "' frameborder='0' style='display:none'></iframe>")*/
+        /*$('.voice').append("<iframe class='voice' src='https://translate.google.com/translate_tts?ie=utf-8&tl=en&q=" + text + "' frameborder='0' style='display:none'></iframe>")*/
 	$('.voice').append("<audio autoplay><source src=http://tts-api.com/tts.mp3?q=" + text + " type=audio/mpeg></audio><p>\"" + text + "\"");
-	}
+    }
 
     function checkIfUserIsInOtherCircle(route, user) {
         var i = 0;
@@ -301,7 +305,7 @@ $(function () {
         // Check if the user is within x meters of any segment on route
         if (getMinArray(minDistance) > reRouteDistance) {
             getDirections(locationMarker.getLayers()[0].getLatLng().lng, locationMarker.getLayers()[0].getLatLng().lat, lastPressed.latlng.lng, lastPressed.latlng.lat, false);
-            $('.voice').attr('src', 'https://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Recalculating')
+            $('.voice').attr('src', 'http://tts-api.com/tts.mp3?q=Recalculating')
             section = 0;
         } else {
             console.log('User is within' + reRouteDistance + 'meters of route')
